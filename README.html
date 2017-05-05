@@ -1,0 +1,65 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hello!</title>
+    <link rel="stylesheet" href="https://stackedit.io/res-min/themes/base.css" />
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
+</head>
+<body><div class="container"><h1 id="bem-vindo-ao-simples-telegrambot">Bem Vindo ao Simples TelegramBot</h1>
+
+    <p>Espero ajudar pessoas com baixíssimo conhecimento em PHP deixando tudo o mais fácil possivel.</p>
+
+    <hr>
+
+    <h2 id="instrução-de-uso">Instrução de uso.</h2>
+
+    <p>Após criar o cadastro do bot no <a>@botfather</a>, você precisará copiar todo o conteúdo da pasta e por numa pasta secreta em seu site. <br>
+        Vamos as exigências: <br>
+        - PHP 7 <br>
+        - SSL</p>
+
+    <p>Quanto ao SSL podemos contornar isso hospedando no <a href="https://herokuaap.com">Heroku</a>, ou configurando o <a href="https://cloudflare.com">CloudFlare</a> no seu site.</p>
+
+    <h2 id="funcionamento">Funcionamento</h2>
+
+    <p>O funcionamento é bem simples, quando o usuário passa um texto para o nosso bot ele verifica se nesse texto tem um comando e executa uma ação. Essa ação é enviada ao API do telegram, podendo ser um texto, imagens, documentos , localização e afins.</p>
+
+    <h2 id="mão-na-massa">Mão na massa</h2>
+
+    <p>Ponha o nome no seu hook como desejar</p>
+
+    <pre><code>require("vendor/autoload.php");
+use Blx32\telegram;
+
+$telegram = new Blx32\telegram\Telegram(array(
+    'bot_id' =&gt; 'SEU_BOT_KEY',
+    'adms' =&gt; array(),
+    'folder_log' =&gt; __DIR__));
+
+
+$text = $telegram-&gt;Text();
+$chat_id = $telegram-&gt;ChatID();
+$chat_id_adm = array('name' =&gt; 'user_id');
+
+if (mb_substr($text, 0, 6) == "/teste") {
+$text_seg = trim(mb_substr($text, 6));
+$reply = "Sucesso!\nVocê digitou: ".$text_seg;
+$content = array('chat_id' =&gt; $chat_id, 'text' =&gt; $reply);
+$telegram-&gt;sendMessage($content);
+}
+</code></pre>
+
+    <p>Este é um exemplo simples do que pode ser feito.</p>
+
+    <h2 id="ativação">Ativação</h2>
+
+    <p>Para que ele funcione é preciso dizer ao Telegram onde esta hospedado sua aplicação. Para isso digite em seu navegador:</p>
+
+    <pre><code>https://api.telegram.org/bot(BOT_KEY)/setwebhook?url=(URL)
+</code></pre>
+
+    <p>Sendo URL: <code>https://seu_site.com.br/_pasta_secreta_/nome_dado_ao_hook.php</code></p></div></body>
+</html>

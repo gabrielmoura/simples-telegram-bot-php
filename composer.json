@@ -1,0 +1,15 @@
+{
+    "name": "Blx32/telegram",
+    "description": "Bot telegram",
+    "authors": [
+        {
+            "name": "Gabriel Moura",
+            "email": "g@srmoura.com.br"
+        }
+    ],"minimum-stability": "stable",
+    "autoload": {
+        "psr-4": {
+            "Blx32\\": "Blx32/"
+        }
+    }
+}
